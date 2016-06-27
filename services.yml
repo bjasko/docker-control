@@ -1,0 +1,19 @@
+version: '2'
+services:
+   
+     docker-ssh:
+        container_name: docker-shell
+        image: spali/shellinabox
+        network_mode: "container:docker-vpn"
+        environment:
+           - SHELLINABOX_SERVICE_HOST=host
+           - SHELLINABOX_DISABLE_SSL=1
+           - SHELLINABOX_DEFAULT=host
+
+     docker-ui:
+        container_name: docker-ui
+        image: uifd/ui-for-docker
+        privileged: true
+        network_mode: "container:docker-vpn"
+        volumes:
+           - /var/run/docker.sock:/var/run/docker.sock

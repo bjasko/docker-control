@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+     docker-vpn:
+        image: bjasko/openvpn-client
+        cap_add:
+           - NET_ADMIN
+        container_name: docker-vpn
+        devices:
+           - "/dev/net/tun"
+        volumes:
+           - /data/vpn/openvpn:/etc/openvpn
+   
